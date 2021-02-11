@@ -14,7 +14,7 @@
 	<header>
 		<h2>Inserción de nuevo alumno</h2>
 	</header>
-	<%@include file="/menu.html"%>
+	<%@include file="../../menu.html"%>
 
 	<div class="container">
 		<div class="form">
@@ -22,9 +22,12 @@
 			<form action="http://localhost:8080/Colegio/insertarAlumnos"
 				method="post">
 
-				<label for="id">DNI Alumno</label> <input type="text" id="id"name="id"> 
+				<label for="id">DNI Alumno</label>
+				<input type="text" id="id"name="id"> 
+				
 				<label for="nombre">Nombre Alumno</label> 
 				<input type="text" id="nombre" name="nombre"><br> 
+				
 				<select name="municipios" id="municipios" form="formulario">
 
 					<c:forEach items="${comboMunicipios }" var="municipios">
@@ -33,7 +36,7 @@
 
 				</select>
 				<label for="familiaNumerosa">Familia numerosa:</label>
-				<input type="checkbox" id="familiaNumerosa" name="familiaNumerosa" value="SI">
+				<input type="checkbox" id="familiaNumerosa" name="familiaNumerosa" value="1">
 				<br>
 				<input type="submit" value="Enviar">
 

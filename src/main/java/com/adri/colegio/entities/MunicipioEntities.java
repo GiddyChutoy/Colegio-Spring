@@ -46,6 +46,48 @@ public class MunicipioEntities {
 	public MunicipioEntities() {
 		super();
 	}
+
+	/**
+	 * @return the idMunicipio
+	 */
+	public int getIdMunicipio() {
+		return idMunicipio;
+	}
+
+	/**
+	 * @param idMunicipio the idMunicipio to set
+	 */
+	public void setIdMunicipio(int idMunicipio) {
+		this.idMunicipio = idMunicipio;
+	}
+
+	/**
+	 * @return the idProvincia
+	 */
+	public int getIdProvincia() {
+		return idProvincia;
+	}
+
+	/**
+	 * @param idProvincia the idProvincia to set
+	 */
+	public void setIdProvincia(int idProvincia) {
+		this.idProvincia = idProvincia;
+	}
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	
 	
 	

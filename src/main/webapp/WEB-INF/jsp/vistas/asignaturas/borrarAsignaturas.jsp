@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>Borrar asignaturas</h1>
-	<%@include file="/menu.html"%>
+	<%@include file="../../menu.html"%>
 			<div class="form">
 			
 				<form action="http://localhost:8080/Colegio/formularioBorrarAsignaturas" method="post">

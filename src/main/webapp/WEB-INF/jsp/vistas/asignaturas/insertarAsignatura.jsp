@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>Insertar nueva asaignatura</h1>
-	<%@include file="/menu.html"%>
+	<%@include file="../../menu.html"%>
 
 
 
