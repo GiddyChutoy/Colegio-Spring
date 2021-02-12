@@ -25,10 +25,17 @@
 
 				<label for="id">Id Asignatura</label> 
 				<input type="text" id="id" name="id"> 
+				
+				
 				<label for="nombre">Nombre Asignatura</label>
 				<input type="text" id="nombre" name="nombre">
+				
+				<br>
+				
 				<label for="curso">Curso</label>
 				<input type="text" id="curso" name="curso">
+				
+				
 				<label for="tasa">Tasa</label>
 				<input id="tasa" name="tasa" type="text">
 				<br> 
@@ -44,7 +51,7 @@
 		<th>Asignatura</th>
 		<th>Curso</th>
 		</tr>
-			<c:forEach items="${lista }" var="asignatura">
+			<c:forEach items="${lista}" var="asignatura">
 				<tr>
 					<td>${asignatura.id}</td>
 					<td>${asignatura.nombre}</td>

@@ -94,14 +94,14 @@ public class AsignaturaEntities {
 	/**
 	 * @return the tasa
 	 */
-	public int getTasa() {
+	public Integer getTasa() {
 		return tasa;
 	}
 
 	/**
 	 * @param tasa the tasa to set
 	 */
-	public void setTasa(int tasa) {
+	public void setTasa(Integer tasa) {
 		this.tasa = tasa;
 	}
 	

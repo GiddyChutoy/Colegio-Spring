@@ -14,6 +14,7 @@
 <body>
 	<h1>Borrar asignaturas</h1>
 	<%@include file="../../menu.html"%>
+	<div class="container">
 			<div class="form">
 			
 				<form action="http://localhost:8080/Colegio/formularioBorrarAsignaturas" method="post">
@@ -43,5 +44,7 @@
 					</form>
 				</div>
 			</c:forEach>
+			
+			</div>
 </body>
 </html>

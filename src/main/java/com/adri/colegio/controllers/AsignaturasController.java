@@ -58,24 +58,104 @@ public class AsignaturasController {
 		return "/vistas/asignaturas/insertarAsignatura";
 	}
 	
+	
+	
+	
+	
+	
+	
 	//Listar
 	
 	@GetMapping(value = "listaAsignaturas")
 	public String listaAsignaturaFormulario(ModelMap model) {
 		
-		return "/vistas/asignaturas/listaAsignatura";
+		return "/vistas/asignaturas/listaAsignaturas";
 	}
 	
-	@PostMapping(value = "listaAsignatura")
+	@PostMapping(value = "listaAsignaturas")
 	public String listaAsignatura(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "curso", required = false) Integer curso,
+			@RequestParam(value = "tasa", required = false) Double tasa,
+			ModelMap model) {
+		
+		List<Asignatura> listaAsignaturas = asignaturaRepository.listarAsignaturasSimple(id, nombre);
+		model.addAttribute("lista", listaAsignaturas);
+		
+		return "/vistas/asignaturas/listaAsignaturas";
+	}
+	
+	
+	
+	
+	
+	
+	//Borrar
+	@GetMapping(value = "formularioBorrarAsignaturas")
+	public String borrarAsignaturaFormulario(ModelMap model) {
+		
+		
+		return "/vistas/asignaturas/borrarAsignaturas";
+	}
+	
+	@PostMapping(value = "formularioBorrarAsignaturas")
+	public String mostrarAsignaturaFormulario(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre, ModelMap model) {
+		
+		List<Asignatura> listaAsignaturas = asignaturaRepository.listarAsignaturasSimple(id, nombre);
+		model.addAttribute("lista", listaAsignaturas);
+		
+		return "/vistas/asignaturas/borrarAsignaturas";
+	}
+	
+	
+	@PostMapping(value = "borrarAsignatura")
+	public String borrarAsignatura(@RequestParam(value = "id", required = true) Integer id, ModelMap model) {
+		
+		asignaturaRepository.deleteById(id);
+		
+		return "/vistas/asignaturas/borrarAsignaturas";
+	}
+	
+	
+	
+	
+	
+	
+	
+	//Actualizar
+	
+	@GetMapping(value = "actualizarAsignatura")
+	public String actualizarAsignaturaFormulario(ModelMap model) {
+		
+		
+		return "/vistas/asignaturas/modificarAsignatura";
+	}
+	
+	@PostMapping(value = "modificar")
+	public String mostrarAsignaturaFormularioActualizar(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre, ModelMap model) {
+		
+		List<Asignatura> listaAsignaturas = asignaturaRepository.listarAsignaturasSimple(id, nombre);
+		model.addAttribute("lista", listaAsignaturas);
+		
+		return "/vistas/asignaturas/modificarAsignatura";
+	}
+	
+	
+	@PostMapping(value = "actualizarAsignatura")
+	public String actualizarAsignatura(@RequestParam(value = "id", required = false) Integer id,
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "curso", required = false) Integer curso,
 			@RequestParam(value = "tasa", required = false) Integer tasa,
 			ModelMap model) {
 		
-		List<Asignatura> listaAsignatura;
+		AsignaturaEntities asignatura = new AsignaturaEntities(id, nombre, curso, tasa);
+		asignaturaRepository.save(asignatura);
 		
-		return "/vistas/asignaturas/insertarAsignatura";
+	
+		return "/vistas/asignaturas/modificarAsignatura";
+		
 	}
 	
 }
