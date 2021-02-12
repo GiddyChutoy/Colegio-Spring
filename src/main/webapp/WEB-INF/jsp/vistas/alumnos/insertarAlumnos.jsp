@@ -28,10 +28,10 @@
 				<label for="nombre">Nombre Alumno</label> 
 				<input type="text" id="nombre" name="nombre"><br> 
 				
-				<select name="municipios" id="municipios" form="formulario">
+				<select name="municipios" id="municipios" >
 
 					<c:forEach items="${comboMunicipios }" var="municipios">
-						<option value="${municipios.id }">${municipios.descripcion}</option>
+						<option value="${municipios.id }">${municipios.id } - ${municipios.descripcion}</option>
 					</c:forEach>
 
 				</select>

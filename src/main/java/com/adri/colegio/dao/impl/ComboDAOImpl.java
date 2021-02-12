@@ -44,16 +44,16 @@ public class ComboDAOImpl implements CombosDAO {
 
 	@Override
 	public List<Combo> comboAlumnos() {
-		Iterable<AlumnoEntities> listaEntidadesMunicipios = alumnoRepository.findAll();
-		List<Combo> listaAlumnos = mapeoEntidadAlumnoCombo(listaEntidadesMunicipios);
+		Iterable<AlumnoEntities> listaEntidadesAlumnos = alumnoRepository.findAll();
+		List<Combo> listaAlumnos = mapeoEntidadAlumnoCombo(listaEntidadesAlumnos);
 		
 		return listaAlumnos;
 	}
 
 	@Override
 	public List<Combo> comboAsignaturas() {
-		Iterable<AsignaturaEntities> listaEntidadesMunicipios = asignaturaRepository.findAll();
-		List<Combo> listaAlumnos = mapeoEntidadAsignaturaCombo(listaEntidadesMunicipios);
+		Iterable<AsignaturaEntities> listaEntidadesAsignaturas = asignaturaRepository.findAll();
+		List<Combo> listaAlumnos = mapeoEntidadAsignaturaCombo(listaEntidadesAsignaturas);
 		
 		return listaAlumnos;
 	}

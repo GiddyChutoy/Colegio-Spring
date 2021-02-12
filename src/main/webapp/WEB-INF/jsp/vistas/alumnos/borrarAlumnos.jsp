@@ -14,6 +14,7 @@
 <body>
 	<h1>Borrar alumnos</h1>
 	<%@include file="../../menu.html"%>
+	<div class="container">
 			<div class="form">
 			
 				<form action="http://localhost:8080/Colegio/formularioBorrarAlumnos" method="post">
@@ -31,7 +32,7 @@
 			
 			<c:forEach items="${lista }" var="alumno">
 				<div class="form">
-					<form action="http://localhost:8080/Colegio/borrarAlumno" method="POST">
+					<form action="http://localhost:8080/Colegio/borrarAlumnos" method="POST">
 						<label for="id">Id alumnos:</label>
 						<input readonly type="text" value="${alumno.id }" id="id" name="id">
 						<label for="nombre">Nombre alumno</label>
@@ -46,5 +47,6 @@
 					</form>
 				</div>
 			</c:forEach>
+	</div>
 </body>
 </html>

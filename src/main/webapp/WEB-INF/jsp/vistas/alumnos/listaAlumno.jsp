@@ -23,10 +23,16 @@
 
 			<form action="http://localhost:8080/Colegio/listadoAlumnos" method="post">
 
-				<label for="id">Id Alumno</label> <input type="text" id="id"
-					name="id"> <label for="nombre">Nombre Alumno</label> <input
-					type="text" id="nombre" name="nombre"><br> <input
-					type="submit" value="Enviar">
+				<label for="id">Id Alumno</label> 
+				<input type="text" id="id" name="id"> 
+				
+				
+				<label for="nombre">Nombre Alumno</label> 
+				<input type="text" id="nombre" name="nombre">
+				
+				<br>
+				
+				<input type="submit" value="Enviar">
 
 			</form>
 

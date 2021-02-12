@@ -28,14 +28,14 @@
 				<input type="text" id="id" name="id"> 
 				<label for="nombre">Nombre Alumno</label> 
 				<input type="text" id="nombre" name="nombre">
-				<br> 
+				<br>
 				
-				<c:forEach items="${comboMunicipio}" var="municipio">
-					<select>
-						<option value="${municipio.idMunicipio }">${municipio.descripcion}</option>
-					</select>
-				</c:forEach>
-				
+				 
+				<!-- <select name="municipios" id="municipios">
+					<c:forEach items="${comboMunicipio}" var="municipio">					
+						<option value="${municipio.id }">${municipio.descripcion}</option>					
+					</c:forEach>
+				</select> -->
 				<input type="submit" value="Enviar">
 			</form>
 		
@@ -52,7 +52,7 @@
 					<input type="text" id="nombre" name="nombre" value="${alumno.nombre }">
 					<br>
 					<label for="municipio">Municipio:</label>
-					<select name="municipio" form="formulario">
+					<select name="municipio" id="municipio" >
 						<c:forEach items="${comboMunicipios }" var="municipio">
 							<option value="${municipio.id }">${municipio.descripcion }</option>
 						</c:forEach>
@@ -60,11 +60,11 @@
 					<label>Familia numerosa:</label>
 					
 					<c:if test="${alumno.familiaNumerosa == 1}">
-					<input type="checkbox" id="familiaNumerosa" name="familiaNumerosa" value="SI" checked>
+					<input type="checkbox" id="familiaNumerosa" name="familiaNumerosa" value="1" checked>
 					</c:if>
 					
 					<c:if test="${alumno.familiaNumerosa == 0}">
-					<input type="checkbox" id="familiaNumerosa" name="familiaNumerosa" value="SI">
+					<input type="checkbox" id="familiaNumerosa" name="familiaNumerosa" value="0">
 					</c:if>
 					
 					<input type="submit" value="modificar">
