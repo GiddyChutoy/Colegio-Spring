@@ -3,6 +3,8 @@
  */
 package com.adri.colegio.controllers;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.adri.colegio.dao.CombosDAO;
+import com.adri.colegio.dtos.Asignatura;
 import com.adri.colegio.entities.AsignaturaEntities;
 import com.adri.colegio.repositorios.AsignaturaRepository;
 
@@ -57,5 +60,22 @@ public class AsignaturasController {
 	
 	//Listar
 	
+	@GetMapping(value = "listaAsignaturas")
+	public String listaAsignaturaFormulario(ModelMap model) {
+		
+		return "/vistas/asignaturas/listaAsignatura";
+	}
+	
+	@PostMapping(value = "listaAsignatura")
+	public String listaAsignatura(@RequestParam(value = "id", required = false) Integer id,
+			@RequestParam(value = "nombre", required = false) String nombre,
+			@RequestParam(value = "curso", required = false) Integer curso,
+			@RequestParam(value = "tasa", required = false) Integer tasa,
+			ModelMap model) {
+		
+		List<Asignatura> listaAsignatura;
+		
+		return "/vistas/asignaturas/insertarAsignatura";
+	}
 	
 }
