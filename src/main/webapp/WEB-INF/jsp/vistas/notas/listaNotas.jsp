@@ -23,16 +23,21 @@
 
 			<form action="http://localhost:8080/Colegio/listadoNotas" method="post">
 
-				<label for="id">Id:</label> 
-				<input type="text" id="id" name="id"> 
+				<label for="idAlumno">Id alumno:</label> 
+				<input type="text" id="idAlumno" name="idAlumno">
+				 
 				<label for="nombre">Nombre Alumno:</label> 
 				<input type="text" id="nombre" name="nombre"><br>
+				
 				<label for="asignatura">Asignatura:</label>
 				<input type="text" id="asignatura" name="asignatura">
+				
 				<label for="nota">Nota:</label>
 				<input type="text" id="nota" name="nota"><br>
+				
 				<label for="fecha">Fecha: </label>
 				<input type="date" id="fecha" name="fecha">
+				
 				<input type="submit" value="Enviar">
 
 			</form>

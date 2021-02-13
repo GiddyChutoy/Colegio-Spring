@@ -24,10 +24,14 @@
 			<form action="http://localhost:8080/Colegio/borrarNotasFormulario" method="post">
 				<label for="nombreAlumno">Nombre alumno: </label> 
 				<input type="text" id="nombreAlumno" name="nombreAlumno"> 
+				
 				<label for="asignatura">Asignatura:</label>
 				<input type="text" id="asignatura" name="asignatura">
+				
+				<br>
+				
 				<label for="fecha">Fecha: </label>
-				<input type="text" id="fecha" name="fecha">
+				<input type="date" id="fecha" name="fecha">
 				<br> 
 				<input type="submit" value="Enviar">
 
@@ -43,7 +47,7 @@
 				<label for="fecha">Nota: </label>
 				<input type="text" id="nota" name="nota" value="${notas.nota }" readonly>
 				<label for="fecha">Fecha: </label>
-				<input type="text" id="fecha" name="fecha" value="${notas.fecha }" readonly>
+				<input type="date" id="fecha" name="fecha" value="${notas.fecha }" readonly>
 				<br> 
 				<input type="submit" value="Borrar">
 			</form>

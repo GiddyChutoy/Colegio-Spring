@@ -39,6 +39,18 @@ public class NotaEntities {
 	@Column(name = "fecha")
 	private String fecha;
 
+	
+	
+	
+	public NotaEntities(int id, AlumnoEntities idAlumno, AsignaturaEntities idAsignatura, int nota, String fecha) {
+		super();
+		this.id = id;
+		this.idAlumno = idAlumno;
+		this.idAsignatura = idAsignatura;
+		this.nota = nota;
+		this.fecha = fecha;
+	}
+
 	/**
 	 * @param id
 	 * @param idAlumno

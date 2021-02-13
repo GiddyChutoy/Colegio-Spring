@@ -24,10 +24,14 @@
 			<form action="http://localhost:8080/Colegio/actualizarNotas" method="post">
 				<label for="nombreAlumno">Nombre alumno: </label> 
 				<input type="text" id="nombreAlumno" name="nombreAlumno"> 
+				
 				<label for="asignatura">Asignatura:</label>
 				<input type="text" id="asignatura" name="asignatura">
+				
+				<br>
+				
 				<label for="fecha">Fecha: </label>
-				<input type="text" id="fecha" name="fecha">
+				<input type="date" id="fecha" name="fecha">
 				<br> 
 				<input type="submit" value="Enviar">
 
@@ -37,7 +41,7 @@
 		
 		<c:forEach items="${listaNotas}" var="notas">
 			<form action="http://localhost:8080/Colegio/actualizarNotasDB" method="POST">
-				<input class="hidden" id="idAlumnosAntiguo" name="idAlumnosAntiguo" type="text" value="${notas.id }">
+				<input class="hidden" id="idAntiguo" name="idAntiguo" type="text" value="${notas.id }">
 				<label for="nombreAlumno">Nombre alumno: </label> 
 				<select name="idAlumno" id="idAlumno">
 					<c:forEach items="${listaAlumnos}" var="alumno">
