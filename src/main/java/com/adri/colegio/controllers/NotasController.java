@@ -3,6 +3,8 @@
  */
 package com.adri.colegio.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,11 +65,24 @@ public class NotasController {
 			@RequestParam(value = "nota", required = false) Integer nota,
 			@RequestParam(value = "fecha", required = false) String fecha, ModelMap model) {
 		
-		AlumnoEntities a = alumnoRepository.findById(idAlumno);
+		Date cDate = new Date();
+		String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
 		
-		AsignaturaEntities asig = asignaturaRepository.findById(idAsignatura);
+		if(fecha == "") {
+			 fecha = fDate;
+		}
+		
+		Optional<AlumnoEntities> alumnoOptional = alumnoRepository.findById(idAlumno);
+		
+		Optional<AsignaturaEntities> asignaturaOptional = asignaturaRepository.findById(idAsignatura);
+		
+		AlumnoEntities a = alumnoOptional.get();
+		
+		AsignaturaEntities asig = asignaturaOptional.get();
 		
 		NotaEntities n = new NotaEntities(a, asig, nota, fecha);
+		
+		notaRepository.save(n);
 		
 		return "/vistas/notas/insertarNotas";
 	}

@@ -38,7 +38,7 @@
 				<label for="nota">Nota: </label>
 				<input type="text" id="nota" name="nota">
 				<label for="fecha">Fecha</label>
-				<input type="text" id="fecha" name="fecha">
+				<input type="date" id="fecha" name="fecha">
 				<br> 
 				<input type="submit" value="Enviar">
 
