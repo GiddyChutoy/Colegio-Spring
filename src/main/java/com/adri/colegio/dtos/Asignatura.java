@@ -11,7 +11,7 @@ public class Asignatura {
 	private int id;
 	private String nombre;
 	private int curso;
-	private int tasa;
+	private Double tasa;
 
 	/**
 	 * 
@@ -37,7 +37,7 @@ public class Asignatura {
 	 * @param nombre
 	 * @param curso
 	 */
-	public Asignatura(int id, String nombre, int curso, int tasa) {
+	public Asignatura(int id, String nombre, int curso, Double tasa) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -90,14 +90,14 @@ public class Asignatura {
 	/**
 	 * @return the tasa
 	 */
-	public int getTasa() {
+	public Double getTasa() {
 		return tasa;
 	}
 
 	/**
 	 * @param tasa the tasa to set
 	 */
-	public void setTasa(int tasa) {
+	public void setTasa(Double tasa) {
 		this.tasa = tasa;
 	}
 

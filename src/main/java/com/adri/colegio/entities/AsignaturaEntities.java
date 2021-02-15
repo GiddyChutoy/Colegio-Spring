@@ -26,7 +26,7 @@ public class AsignaturaEntities {
 	private int curso;
 	
 	@Column(name = "tasa")
-	private Integer tasa;
+	private Double tasa;
 
 	/**
 	 * @param id
@@ -34,7 +34,7 @@ public class AsignaturaEntities {
 	 * @param curso
 	 * @param tasa
 	 */
-	public AsignaturaEntities(int id, String nombre, int curso, Integer tasa) {
+	public AsignaturaEntities(int id, String nombre, int curso, Double tasa) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -94,14 +94,14 @@ public class AsignaturaEntities {
 	/**
 	 * @return the tasa
 	 */
-	public Integer getTasa() {
+	public Double getTasa() {
 		return tasa;
 	}
 
 	/**
 	 * @param tasa the tasa to set
 	 */
-	public void setTasa(Integer tasa) {
+	public void setTasa(Double tasa) {
 		this.tasa = tasa;
 	}
 	

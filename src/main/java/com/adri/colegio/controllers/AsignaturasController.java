@@ -48,7 +48,7 @@ public class AsignaturasController {
 	public String insertarAsignaturas(@RequestParam(value = "id", required = false) Integer id,
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "curso", required = false) Integer curso,
-			@RequestParam(value = "tasa", required = false) Integer tasa,
+			@RequestParam(value = "tasa", required = false) Double tasa,
 			ModelMap model) {
 		
 		AsignaturaEntities asignatura = new AsignaturaEntities(id, nombre, curso, tasa);
@@ -79,7 +79,7 @@ public class AsignaturasController {
 			@RequestParam(value = "tasa", required = false) Double tasa,
 			ModelMap model) {
 		
-		List<Asignatura> listaAsignaturas = asignaturaRepository.listarAsignaturasSimple(id, nombre);
+		List<Asignatura> listaAsignaturas = asignaturaRepository.listarAsignaturas(id, nombre, curso, tasa);
 		model.addAttribute("lista", listaAsignaturas);
 		
 		return "/vistas/asignaturas/listaAsignaturas";
@@ -147,7 +147,7 @@ public class AsignaturasController {
 	public String actualizarAsignatura(@RequestParam(value = "id", required = false) Integer id,
 			@RequestParam(value = "nombre", required = false) String nombre,
 			@RequestParam(value = "curso", required = false) Integer curso,
-			@RequestParam(value = "tasa", required = false) Integer tasa,
+			@RequestParam(value = "tasa", required = false) Double tasa,
 			ModelMap model) {
 		
 		AsignaturaEntities asignatura = new AsignaturaEntities(id, nombre, curso, tasa);

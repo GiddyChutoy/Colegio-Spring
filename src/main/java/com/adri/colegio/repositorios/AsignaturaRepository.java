@@ -15,11 +15,11 @@ public interface AsignaturaRepository extends CrudRepository<AsignaturaEntities,
 			+ " FROM com.adri.colegio.entities.AsignaturaEntities as asig"
 			+ " WHERE (asig.id LIKE CONCAT('%', :id, '%') or :id is null)"
 			+ " AND asig.nombre LIKE CONCAT('%', :nombreAsignatura, '%')"
-			+ " AND asig.curso LIKE CONCAT('%', :curso, '%')"
-			+ " AND asig.tasa LIKE CONCAT('%', :tasa, '%')"
-			)
-	List<Asignatura> listarAsignaturas(@Param("id") Integer id, @Param("nombreAsignatura") String nombre, 
-			@Param("curso") Integer curso, 
+			+ " AND (asig.curso LIKE CONCAT('%', :curso, '%') or :curso is null)"
+			+ " AND (asig.tasa LIKE CONCAT('%', :tasa, '%') or :tasa is null)")
+			
+	List<Asignatura> listarAsignaturas(@Param("id") Integer id, @Param("nombreAsignatura") String nombre,
+			@Param("curso") Integer curso,
 			@Param("tasa") Double tasa);
 	
 	

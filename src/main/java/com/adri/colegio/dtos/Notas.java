@@ -35,21 +35,21 @@ public class Notas {
 		this.fecha = fecha;
 	}
 
-	/**
-	 * @param idAlumno
-	 * @param nombre
-	 * @param asignatura
-	 * @param nota
-	 * @param fecha
-	 */
-	public Notas(int idAlumno, String nombre, String asignatura, int nota, String fecha) {
-		super();
-		this.idAlumno = idAlumno;
-		this.nombre = nombre;
-		this.asignatura = asignatura;
-		this.nota = nota;
-		this.fecha = fecha;
-	}
+//	/**
+//	 * @param idAlumno
+//	 * @param nombre
+//	 * @param asignatura
+//	 * @param nota
+//	 * @param fecha
+//	 */
+//	public Notas(int idAlumno, String nombre, String asignatura, int nota, String fecha) {
+//		super();
+//		this.idAlumno = idAlumno;
+//		this.nombre = nombre;
+//		this.asignatura = asignatura;
+//		this.nota = nota;
+//		this.fecha = fecha;
+//	}
 
 	/**
 	 * @param id
@@ -82,6 +82,24 @@ public class Notas {
 		this.id = id;
 		this.idAlumno = idAlumno;
 		this.idAsignatura = idAsignatura;
+		this.nota = nota;
+		this.fecha = fecha;
+	}
+
+	
+	
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param asignatura
+	 * @param nota
+	 * @param fecha
+	 */
+	public Notas(int id, String nombre, String asignatura, int nota, String fecha) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.asignatura = asignatura;
 		this.nota = nota;
 		this.fecha = fecha;
 	}

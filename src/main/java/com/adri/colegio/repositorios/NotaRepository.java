@@ -25,20 +25,20 @@ public interface NotaRepository extends CrudRepository<NotaEntities, Integer> {
 			+ " where (a.id LIKE CONCAT('%', :idAlumno, '%') or :idAlumno is null)"
 			+ " AND asig.nombre LIKE CONCAT('%', :asignatura, '%')"
 			+ " AND a.nombre LIKE CONCAT('%', :nombreAlumno, '%')"
-			+ " AND n.nota LIKE CONCAT('%', :nota, '%')"
+			+ " AND (n.nota LIKE CONCAT('%', :nota, '%') or :nota is null)"
 			+ " AND n.fecha LIKE CONCAT('%', :fecha, '%')")
 	List<Notas> listaNotas(@Param("idAlumno") Integer idAlumno, @Param("nombreAlumno") String nombre, 
 			@Param("asignatura") String asignatura, @Param("nota") Integer nota, @Param("fecha") String fecha);
 	
 	
-	@Query(value = "select new com.adri.colegio.dtos.Notas (a.nombre, asig.nombre, n.fecha)"
+	@Query(value = "select new com.adri.colegio.dtos.Notas (a.id, a.nombre, asig.nombre, n.nota, n.fecha)"
 			+ " FROM com.adri.colegio.entities.NotaEntities as n"
 			+ " INNER JOIN com.adri.colegio.entities.AlumnoEntities as a on n.idAlumno.id = a.id"
 			+ " INNER JOIN com.adri.colegio.entities.AsignaturaEntities as asig on n.idAsignatura.id = asig.id"
 			+ " where asig.nombre LIKE CONCAT('%', :asignatura, '%')"
 			+ " AND a.nombre LIKE CONCAT('%', :nombreAlumno, '%')"
 			+ " AND n.fecha LIKE CONCAT('%', :fecha, '%')")
-	List<Notas> listaNotasSimple(@Param("nombreAlumno") String nombre, @Param("asignatura") String asignatura,
+	List<Notas> listaNotasSimple(@Param("asignatura") String asignatura, @Param("nombreAlumno") String nombre,
 			@Param("fecha") String fecha);
 	
 }

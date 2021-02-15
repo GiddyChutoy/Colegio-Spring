@@ -135,7 +135,7 @@ public class NotasController {
 			@RequestParam(value = "fecha", required = false) String fecha,
 			ModelMap model) {
 		
-		List<Notas> listaNotas = notaRepository.listaNotasSimple(nombre, asignatura, fecha);
+		List<Notas> listaNotas = notaRepository.listaNotasSimple(asignatura, nombre, fecha);
 		model.addAttribute("listaNotas", listaNotas);
 		
 		
@@ -173,7 +173,7 @@ public class NotasController {
 		List<Combo> listaAsignaturas = combo.comboAsignaturas();
 		model.addAttribute("listaAsignaturas", listaAsignaturas);
 		
-		List<Notas> listaNotas = notaRepository.listaNotasSimple(nombre, asignatura, fecha);
+		List<Notas> listaNotas = notaRepository.listaNotasSimple(asignatura, nombre, fecha);
 		model.addAttribute("listaNotas", listaNotas);
 		
 		return "/vistas/notas/actualizarNotas";
