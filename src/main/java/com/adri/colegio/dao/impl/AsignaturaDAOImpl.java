@@ -6,6 +6,7 @@ package com.adri.colegio.dao.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.adri.colegio.dao.AsignaturaDAO;
 import com.adri.colegio.dtos.Asignatura;
@@ -16,6 +17,7 @@ import com.adri.colegio.repositorios.AsignaturaRepository;
  * @author Giddy
  *
  */
+@Service
 public class AsignaturaDAOImpl implements AsignaturaDAO {
 
 	@Autowired

@@ -41,7 +41,7 @@
 		
 		<c:forEach items="${listaNotas}" var="notas">
 			<form action="http://localhost:8080/Colegio/borrarNotasDB" method="POST">
-				<input class="hidden" id="idAlumnosAntiguo" name="idAlumnosAntiguo" type="text" value="${notas.idAlumno }" readonly>
+				<input class="hidden" id="idAlumnosAntiguo" name="idAlumnosAntiguo" type="text" value="${notas.id}" readonly>
 				<label for="nombreAlumno">Nombre alumno: </label> 
 				<input id="nombreAlumno" name="nombreAlumno" value="${notas.nombre }" readonly>
 				<label for="fecha">Nota: </label>

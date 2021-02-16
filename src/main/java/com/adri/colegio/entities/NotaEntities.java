@@ -66,6 +66,18 @@ public class NotaEntities {
 		this.fecha = fecha;
 	}
 
+	
+	
+	
+	
+	/**
+	 * @param id
+	 */
+	public NotaEntities(int id) {
+		super();
+		this.id = id;
+	}
+
 	/**
 	 * 
 	 */

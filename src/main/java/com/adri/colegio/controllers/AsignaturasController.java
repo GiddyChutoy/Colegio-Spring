@@ -3,8 +3,6 @@
  */
 package com.adri.colegio.controllers;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.adri.colegio.dao.AsignaturaDAO;
-import com.adri.colegio.dao.CombosDAO;
-import com.adri.colegio.dtos.Asignatura;
-import com.adri.colegio.entities.AsignaturaEntities;
-import com.adri.colegio.repositorios.AsignaturaRepository;
 
 /**
  * @author 201907
@@ -26,12 +20,6 @@ import com.adri.colegio.repositorios.AsignaturaRepository;
  */
 @Controller
 public class AsignaturasController {
-	
-	@Autowired
-	private CombosDAO combo;
-	
-	@Autowired
-	private AsignaturaRepository asignaturaRepository;
 	
 	@Autowired
 	AsignaturaDAO asigimpl;

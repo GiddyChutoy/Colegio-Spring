@@ -3,28 +3,17 @@
  */
 package com.adri.colegio.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.adri.colegio.dao.CombosDAO;
+import com.adri.colegio.dao.NotaDAO;
 import com.adri.colegio.dtos.Combo;
-import com.adri.colegio.dtos.Notas;
-import com.adri.colegio.entities.AlumnoEntities;
-import com.adri.colegio.entities.AsignaturaEntities;
-import com.adri.colegio.entities.NotaEntities;
-import com.adri.colegio.repositorios.AlumnoRepository;
-import com.adri.colegio.repositorios.AsignaturaRepository;
-import com.adri.colegio.repositorios.NotaRepository;
 
 /**
  * @author Giddy
@@ -34,16 +23,10 @@ import com.adri.colegio.repositorios.NotaRepository;
 public class NotasController {
 
 	@Autowired
-	private NotaRepository notaRepository;
-	
-	@Autowired
-	private AlumnoRepository alumnoRepository;
-	
-	@Autowired
-	private AsignaturaRepository asignaturaRepository;
-	
-	@Autowired
 	private CombosDAO combo;
+	
+	@Autowired
+	NotaDAO notadaoimpl;
 	
 	
 	//Insertar
@@ -66,24 +49,7 @@ public class NotasController {
 			@RequestParam(value = "nota", required = false) Integer nota,
 			@RequestParam(value = "fecha", required = false) String fecha, ModelMap model) {
 		
-		Date cDate = new Date();
-		String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
-		
-		if(fecha == "") {
-			 fecha = fDate;
-		}
-		
-		Optional<AlumnoEntities> alumnoOptional = alumnoRepository.findById(idAlumno);
-		
-		Optional<AsignaturaEntities> asignaturaOptional = asignaturaRepository.findById(idAsignatura);
-		
-		AlumnoEntities a = alumnoOptional.get();
-		
-		AsignaturaEntities asig = asignaturaOptional.get();
-		
-		NotaEntities n = new NotaEntities(a, asig, nota, fecha);
-		
-		notaRepository.save(n);
+		notadaoimpl.insertarNota(idAlumno, idAsignatura, nota, fecha);
 		
 		return "/vistas/notas/insertarNotas";
 	}
@@ -111,8 +77,8 @@ public class NotasController {
 			@RequestParam(value = "fecha", required = false) String fecha,
 			ModelMap model) {
 		
-		List<Notas> listaNotas = notaRepository.listaNotas(idAlumno, nombre, asignatura, nota, fecha);
-		model.addAttribute("lista", listaNotas);
+		
+		model.addAttribute("lista", notadaoimpl.listarNotas(idAlumno, nombre, asignatura, nota, fecha));
 		
 		
 		return "/vistas/notas/listaNotas";
@@ -130,13 +96,13 @@ public class NotasController {
 	}
 	
 	@PostMapping(value = "borrarNotasFormulario")
-	public String mostrarNotasFormulario(@RequestParam(value = "nombre", required = false) String nombre,
+	public String mostrarNotasFormulario(@RequestParam(value = "nombreAlumno", required = false) String nombre,
 			@RequestParam(value = "asignatura", required = false) String asignatura,
 			@RequestParam(value = "fecha", required = false) String fecha,
 			ModelMap model) {
 		
-		List<Notas> listaNotas = notaRepository.listaNotasSimple(asignatura, nombre, fecha);
-		model.addAttribute("listaNotas", listaNotas);
+		
+		model.addAttribute("listaNotas", notadaoimpl.listarNotasSimple(nombre, asignatura, fecha));
 		
 		
 		return "/vistas/notas/borrarNotas";
@@ -146,7 +112,7 @@ public class NotasController {
 	@PostMapping(value = "borrarNotasDB")
 	public String borrarNotas(@RequestParam("idAlumnosAntiguo") Integer id, ModelMap model) {
 		
-		notaRepository.deleteById(id);
+		notadaoimpl.borrarNota(id);
 		
 		return "/vistas/notas/borrarNotas";
 	}
@@ -162,7 +128,7 @@ public class NotasController {
 	
 	
 	@PostMapping(value = "actualizarNotas")
-	public String mostrarActualizarNotasFormulario(@RequestParam(value = "nombre", required = false) String nombre,
+	public String mostrarActualizarNotasFormulario(@RequestParam(value = "nombreAlumno", required = false) String nombre,
 			@RequestParam(value = "asignatura", required = false) String asignatura,
 			@RequestParam(value = "fecha", required = false) String fecha,
 			ModelMap model) {
@@ -173,38 +139,20 @@ public class NotasController {
 		List<Combo> listaAsignaturas = combo.comboAsignaturas();
 		model.addAttribute("listaAsignaturas", listaAsignaturas);
 		
-		List<Notas> listaNotas = notaRepository.listaNotasSimple(asignatura, nombre, fecha);
-		model.addAttribute("listaNotas", listaNotas);
+		
+		model.addAttribute("listaNotas", notadaoimpl.listarNotasSimple(nombre, asignatura, fecha));
 		
 		return "/vistas/notas/actualizarNotas";
 	}
 	
 	@PostMapping(value = "actualizarNotasDB")
-	public String actualizarNotas(@RequestParam(value = "idAntiguo", required = false) Integer id,
-			@RequestParam(value = "nombre", required = false) Integer idAlumno,
-			@RequestParam(value = "asignatura", required = false) Integer idAsignatura,
+	public String actualizarNotas(@RequestParam(value = "idAlumno", required = false) Integer idAlumno,
+			@RequestParam(value = "idAsignatura", required = false) Integer idAsignatura,
 			@RequestParam(value = "nota", required = false) Integer nota,
 			@RequestParam(value = "fecha", required = false) String fecha,
 			ModelMap model) {
 		
-		Date cDate = new Date();
-		String fDate = new SimpleDateFormat("yyyy-MM-dd").format(cDate);
-		
-		if(fecha == "") {
-			 fecha = fDate;
-		}
-		
-		Optional<AlumnoEntities> alumnoOptional = alumnoRepository.findById(idAlumno);
-		
-		Optional<AsignaturaEntities> asignaturaOptional = asignaturaRepository.findById(idAsignatura);
-		
-		AlumnoEntities a = alumnoOptional.get();
-		
-		AsignaturaEntities asig = asignaturaOptional.get();
-		
-		NotaEntities n = new NotaEntities(id, a, asig, nota, fecha);
-		
-		notaRepository.save(n);
+		notadaoimpl.insertarNota(idAlumno, idAsignatura, nota, fecha);
 		
 		
 		return "/vistas/notas/actualizarNotas";
