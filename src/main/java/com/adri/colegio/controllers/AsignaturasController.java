@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.adri.colegio.dao.AsignaturaDAO;
 import com.adri.colegio.dao.CombosDAO;
 import com.adri.colegio.dtos.Asignatura;
 import com.adri.colegio.entities.AsignaturaEntities;
@@ -32,6 +33,8 @@ public class AsignaturasController {
 	@Autowired
 	private AsignaturaRepository asignaturaRepository;
 	
+	@Autowired
+	AsignaturaDAO asigimpl;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AlumnosController.class);
 	
@@ -51,8 +54,10 @@ public class AsignaturasController {
 			@RequestParam(value = "tasa", required = false) Double tasa,
 			ModelMap model) {
 		
-		AsignaturaEntities asignatura = new AsignaturaEntities(id, nombre, curso, tasa);
-		asignaturaRepository.save(asignatura);
+//		AsignaturaEntities asignatura = new AsignaturaEntities(id, nombre, curso, tasa);
+//		asignaturaRepository.save(asignatura);
+		
+		asigimpl.insertarAsignatura(id, nombre, curso, tasa);
 		
 		
 		return "/vistas/asignaturas/insertarAsignatura";
@@ -79,8 +84,7 @@ public class AsignaturasController {
 			@RequestParam(value = "tasa", required = false) Double tasa,
 			ModelMap model) {
 		
-		List<Asignatura> listaAsignaturas = asignaturaRepository.listarAsignaturas(id, nombre, curso, tasa);
-		model.addAttribute("lista", listaAsignaturas);
+		model.addAttribute("lista", asigimpl.listarAsignaturas(id, nombre, curso, tasa));
 		
 		return "/vistas/asignaturas/listaAsignaturas";
 	}
@@ -102,8 +106,8 @@ public class AsignaturasController {
 	public String mostrarAsignaturaFormulario(@RequestParam(value = "id", required = false) Integer id,
 			@RequestParam(value = "nombre", required = false) String nombre, ModelMap model) {
 		
-		List<Asignatura> listaAsignaturas = asignaturaRepository.listarAsignaturasSimple(id, nombre);
-		model.addAttribute("lista", listaAsignaturas);
+		
+		model.addAttribute("lista", asigimpl.listarIdNombre(id, nombre));
 		
 		return "/vistas/asignaturas/borrarAsignaturas";
 	}
@@ -112,7 +116,7 @@ public class AsignaturasController {
 	@PostMapping(value = "borrarAsignatura")
 	public String borrarAsignatura(@RequestParam(value = "id", required = true) Integer id, ModelMap model) {
 		
-		asignaturaRepository.deleteById(id);
+		asigimpl.borrarAsignatura(id);
 		
 		return "/vistas/asignaturas/borrarAsignaturas";
 	}
@@ -136,8 +140,8 @@ public class AsignaturasController {
 	public String mostrarAsignaturaFormularioActualizar(@RequestParam(value = "id", required = false) Integer id,
 			@RequestParam(value = "nombre", required = false) String nombre, ModelMap model) {
 		
-		List<Asignatura> listaAsignaturas = asignaturaRepository.listarAsignaturasSimple(id, nombre);
-		model.addAttribute("lista", listaAsignaturas);
+		
+		model.addAttribute("lista", asigimpl.listarIdNombre(id, nombre));
 		
 		return "/vistas/asignaturas/modificarAsignatura";
 	}
@@ -150,8 +154,7 @@ public class AsignaturasController {
 			@RequestParam(value = "tasa", required = false) Double tasa,
 			ModelMap model) {
 		
-		AsignaturaEntities asignatura = new AsignaturaEntities(id, nombre, curso, tasa);
-		asignaturaRepository.save(asignatura);
+		asigimpl.actualizarAsignatura(id, nombre, curso, tasa);
 		
 	
 		return "/vistas/asignaturas/modificarAsignatura";
