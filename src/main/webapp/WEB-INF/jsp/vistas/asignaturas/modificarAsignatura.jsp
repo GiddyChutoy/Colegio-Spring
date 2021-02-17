@@ -27,6 +27,9 @@
 				<input type="text" id="id" name="id"> 
 				<label for="nombre">Nombre Asignatura:</label>
 				<input type="text" id="nombre" name="nombre">
+				
+				<br>
+				
 				<label for="curso">Curso: </label>
 				<input type="text" id="curso" name="curso">
 				<label for="tasa" >Tasa:</label>

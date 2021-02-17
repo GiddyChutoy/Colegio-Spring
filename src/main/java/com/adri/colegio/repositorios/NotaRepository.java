@@ -31,7 +31,7 @@ public interface NotaRepository extends CrudRepository<NotaEntities, Integer> {
 			@Param("asignatura") String asignatura, @Param("nota") Integer nota, @Param("fecha") String fecha);
 	
 	
-	@Query(value = "select new com.adri.colegio.dtos.Notas (a.id, a.nombre, asig.nombre, n.nota, n.fecha)"
+	@Query(value = "select new com.adri.colegio.dtos.Notas (n.id, a.nombre, asig.nombre, n.nota, n.fecha)"
 			+ " FROM com.adri.colegio.entities.NotaEntities as n"
 			+ " INNER JOIN com.adri.colegio.entities.AlumnoEntities as a on n.idAlumno.id = a.id"
 			+ " INNER JOIN com.adri.colegio.entities.AsignaturaEntities as asig on n.idAsignatura.id = asig.id"

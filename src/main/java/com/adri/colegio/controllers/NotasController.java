@@ -49,6 +49,12 @@ public class NotasController {
 			@RequestParam(value = "nota", required = false) Integer nota,
 			@RequestParam(value = "fecha", required = false) String fecha, ModelMap model) {
 		
+		List<Combo> listaAlumnos = combo.comboAlumnos();
+		model.addAttribute("listaAlumnos", listaAlumnos);
+		
+		List<Combo> listaAsignaturas = combo.comboAsignaturas();
+		model.addAttribute("listaAsignaturas", listaAsignaturas);
+		
 		notadaoimpl.insertarNota(idAlumno, idAsignatura, nota, fecha);
 		
 		return "/vistas/notas/insertarNotas";
