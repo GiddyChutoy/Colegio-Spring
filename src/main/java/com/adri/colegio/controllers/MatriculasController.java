@@ -23,6 +23,8 @@ public class MatriculasController {
 	@Autowired
 	MatriculaDAO matriculaimpl;
 	
+	//Listar
+	
 	
 	@GetMapping(value = "listadoMatriculas")
 	public String listarMatriculasFormulario(ModelMap model) {
@@ -46,4 +48,38 @@ public class MatriculasController {
 		return "/vistas/matriculas/listadoMatriculas";
 	}
 
+	
+	
+	
+	
+	//Borrar
+	
+	@GetMapping(value = "borrarMatriculasFormulario")
+	public String borrarMatriculasFormulario(ModelMap model) {
+		
+		return "/vistas/matriculas/borrarMatriculas";
+	}
+	
+	@PostMapping(value = "borrarMatriculasFormulario")
+	public String mostrarMatriculasFormulario(@RequestParam(value = "idAsig" , required = false) Integer idAsig,
+			@RequestParam(value = "nombreAsig" , required = false) String asigNombre,
+			@RequestParam(value = "idAlum" , required = false) Integer idAlum,
+			@RequestParam(value = "nombreAlum" , required = false) String alumNombre,
+			@RequestParam(value = "fecha" , required = false) String fecha,
+			@RequestParam(value = "activo" , required = false) Integer activo,
+			ModelMap model) {
+		
+		model.addAttribute("lista", matriculaimpl.listarmatriculas(idAsig, asigNombre, idAlum, alumNombre, fecha, activo));
+		
+		return "/vistas/matriculas/borrarMatriculas";
+	}
+	
+	
+	@PostMapping(value = "borrarmatriculaciones")
+	public String borrarMatriculas(@RequestParam(value = "idMatricula" , required = false) Integer idMatricula, ModelMap model) {
+		
+		
+		
+		return "/vistas/matriculas/borrarMatriculas";
+	}
 }

@@ -30,4 +30,12 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 		return listaMatriculas;
 	}
 
+	@Override
+	public Integer borrarMatricula(Integer idMatricula) {
+		
+		
+		
+		return null;
+	}
+
 }
