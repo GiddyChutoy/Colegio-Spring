@@ -23,13 +23,19 @@
 
 			<form action="http://localhost:8080/Colegio/listadoMatriculas" method="post">
 
+				<label for="idAlumno">Id asigntatura</label> 
+				<input type="text" id="idAsigntatura" name="idAsigntatura">
+				
 				<label for="asignatura">Nombre asigntatura</label> 
 				<input type="text" id="asignatura" name="asignatura">
+				
+				<br>
 				
 				<label for="idAlumno">Id Alumno</label> 
 				<input type="text" id="idAlumno" name="idAlumno">
 				
-				<label for="nombre">nombre</label> 
+				
+				<label for="nombre">Nombre</label> 
 				<input type="text" id="nombre" name="nombre">
 				
 				<br>
