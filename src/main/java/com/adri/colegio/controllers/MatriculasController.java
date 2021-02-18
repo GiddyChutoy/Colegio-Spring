@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.adri.colegio.dao.MatriculaDAO;
 import com.adri.colegio.repositorios.MatriculaRepository;
@@ -23,9 +24,6 @@ public class MatriculasController {
 	MatriculaDAO matriculaimpl;
 	
 	
-	@Autowired
-	MatriculaRepository matriculaRepository;
-	
 	@GetMapping(value = "listadoMatriculas")
 	public String listarMatriculasFormulario(ModelMap model) {
 		
@@ -35,9 +33,15 @@ public class MatriculasController {
 	
 	
 	@PostMapping(value = "listadoMatriculas")
-	public String listarMatriculas(ModelMap model) {
+	public String listarMatriculas( @RequestParam(value = "idAsigntatura" , required = false) Integer idAsig,
+			@RequestParam(value = "asignatura" , required = false) String asigNombre,
+			@RequestParam(value = "idAlumno" , required = false) Integer idAlum,
+			@RequestParam(value = "nombre" , required = false) String alumNombre,
+			@RequestParam(value = "fecha" , required = false) String fecha,
+			@RequestParam(value = "activo" , required = false) Integer activo,
+			ModelMap model) {
 		
-		model.addAttribute("lista", null);
+		model.addAttribute("lista", matriculaimpl.listarmatriculas(idAsig, asigNombre, idAlum, alumNombre, fecha, activo));
 		
 		return "/vistas/matriculas/listadoMatriculas";
 	}

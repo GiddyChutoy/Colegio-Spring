@@ -22,6 +22,28 @@ public class Matricula {
 	public Matricula() {
 		super();
 	}
+	
+	
+
+	/**
+	 * @param idAsignatura
+	 * @param asignatura
+	 * @param idAlumno
+	 * @param nombre
+	 * @param fecha
+	 * @param activo
+	 */
+	public Matricula(int idAsignatura, String asignatura, int idAlumno, String nombre, String fecha, int activo) {
+		super();
+		this.idAsignatura = idAsignatura;
+		this.asignatura = asignatura;
+		this.idAlumno = idAlumno;
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.activo = activo;
+	}
+
+
 
 	/**
 	 * @param asignatura
