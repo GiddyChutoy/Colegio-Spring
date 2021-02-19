@@ -60,7 +60,7 @@ public class MatriculasController {
 		return "/vistas/matriculas/borrarMatriculas";
 	}
 	
-	@PostMapping(value = "borrarMatriculasFormulario")
+	@PostMapping(value = "formularioborrarmatriculaciones")
 	public String mostrarMatriculasFormulario(@RequestParam(value = "idAsig" , required = false) Integer idAsig,
 			@RequestParam(value = "nombreAsig" , required = false) String asigNombre,
 			@RequestParam(value = "idAlum" , required = false) Integer idAlum,
@@ -78,7 +78,7 @@ public class MatriculasController {
 	@PostMapping(value = "borrarmatriculaciones")
 	public String borrarMatriculas(@RequestParam(value = "idMatricula" , required = false) Integer idMatricula, ModelMap model) {
 		
-		
+		matriculaimpl.borrarMatricula(idMatricula);
 		
 		return "/vistas/matriculas/borrarMatriculas";
 	}

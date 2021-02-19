@@ -21,7 +21,7 @@
 	<div class="container">
 		<h2>Borrar matriculaciones</h2>
 		<div class="form">
-			<form action="http://localhost:8080/colegio/formularioborrarmatriculaciones" method="post">
+			<form action="http://localhost:8080/Colegio/formularioborrarmatriculaciones" method="post">
 				<label for="idAsig">Id Asignatura</label> 
 				<input type="text" id="idAsig"	name="idAsig"> 
 				<label for="nombreAsig">Nombre Asignatura</label> 
@@ -45,17 +45,17 @@
 		
 		<c:forEach items="${lista}" var="matriculacion">
 			<div class="form">
-			<form action="http://localhost:8080/colegio/borrarmatriculaciones" method="post">
+			<form action="http://localhost:8080/Colegio/borrarmatriculaciones" method="post">
 				<input class="hidden" type="text" name="idMatricula" id="idMatricula" value="${matriculacion.id}">
 				<label for="idAsig">Id Asignatura</label> 
 				<input type="text" id="idAsig"	name="idAsig" value="${matriculacion.idAsignatura }" readonly> 
 				<label for="nombreAsig">Nombre Asignatura</label> 
-				<input type="text" id="nombreAsig" name="nombreAsig" value="${matriculacion.nombreAsignatura }" readonly>
+				<input type="text" id="nombreAsig" name="nombreAsig" value="${matriculacion.asignatura }" readonly>
 				<br> 
 				<label for="idAlum">Id Alumno</label> 
 				<input type="text" id="idAlum"	name="idAlum" value="${matriculacion.idAlumno }" readonly> 
 				<label for="nombreAlum">Nombre Alumno</label> 
-				<input type="text" id="nombreAlum" name="nombreAlum" value="${matriculacion.nombreAlumno }" readonly>
+				<input type="text" id="nombreAlum" name="nombreAlum" value="${matriculacion.nombre }" readonly>
 				<br>
 				<label for="fecha">Fecha</label> 
 				<input type="date" id="fecha" name="fecha" value="${matriculacion.fecha }" readonly>			

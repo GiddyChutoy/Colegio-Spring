@@ -79,6 +79,16 @@ public class MatriculaEntities {
 
 
 	/**
+	 * @param id
+	 */
+	public MatriculaEntities(Integer id) {
+		super();
+		this.id = id;
+	}
+
+
+
+	/**
 	 * 
 	 */
 	public MatriculaEntities() {

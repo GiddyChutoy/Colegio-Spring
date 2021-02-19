@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adri.colegio.dao.MatriculaDAO;
+import com.adri.colegio.dtos.Caja;
 import com.adri.colegio.dtos.Matricula;
+import com.adri.colegio.repositorios.CajaRepository;
 import com.adri.colegio.repositorios.MatriculaRepository;
 
 /**
@@ -22,6 +24,9 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 	@Autowired
 	MatriculaRepository matriculaRepository;
 	
+	@Autowired
+	CajaRepository cajaRepository;
+	
 	@Override
 	public List<Matricula> listarmatriculas(Integer idAsig, String asigNombre, Integer idAlum, String alumNombre, String fecha, Integer activo) {
 	
@@ -33,9 +38,20 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 	@Override
 	public Integer borrarMatricula(Integer idMatricula) {
 		
+		List<Caja> caja = cajaRepository.listaCajas(idMatricula);
 		
+		Caja c = caja.get(0);
 		
-		return null;
+		if(c != null && idMatricula != null) {
+			
+			
+			
+			cajaRepository.deleteById(c.getId());
+			
+			matriculaRepository.deleteById(idMatricula);
+		}
+		
+		return 1;
 	}
 
 }

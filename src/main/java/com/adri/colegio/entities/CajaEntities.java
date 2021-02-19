@@ -64,6 +64,16 @@ public class CajaEntities {
 
 
 	/**
+	 * @param idMatricula
+	 */
+	public CajaEntities(MatriculaEntities idMatricula) {
+		super();
+		this.idMatricula = idMatricula;
+	}
+
+
+
+	/**
 	 * 
 	 */
 	public CajaEntities() {
