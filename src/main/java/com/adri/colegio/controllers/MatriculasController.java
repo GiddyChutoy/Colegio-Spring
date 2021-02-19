@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.adri.colegio.dao.CombosDAO;
 import com.adri.colegio.dao.MatriculaDAO;
 import com.adri.colegio.repositorios.MatriculaRepository;
 
@@ -19,6 +20,9 @@ import com.adri.colegio.repositorios.MatriculaRepository;
  */
 @Controller
 public class MatriculasController {
+	
+	@Autowired
+	private CombosDAO combo;
 	
 	@Autowired
 	MatriculaDAO matriculaimpl;
@@ -82,4 +86,26 @@ public class MatriculasController {
 		
 		return "/vistas/matriculas/borrarMatriculas";
 	}
+	
+	
+	
+	//Insertar
+	
+	@GetMapping(value = "insertarMatriculasFormulario")
+	public String insertarMatriculaFormulario(ModelMap model) {
+		
+		
+		return "/vistas/matriculas/insertarMatriculaciones";
+	}
+	
+	@PostMapping(value = "insertarMatriculasFormulario")
+	public String mostrarInsertarMatriculaFormulario(ModelMap model) {
+		
+		model.addAttribute("listaAlumnos", combo.comboAlumnos());
+		
+		model.addAttribute("listaAsignaturas", combo.comboAsignaturas());
+		
+		return "/vistas/matriculas/insertarMatriculaciones";
+	}
+	
 }
