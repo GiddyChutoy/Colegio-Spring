@@ -38,7 +38,7 @@ public class AlumnoRestController {
 	@Autowired
 	AlumnoRepository alumnoRepository;
 	
-	@PostMapping()
+	@PostMapping(value = "alumnos")
 	public ResponseEntity<String> insertarAlumno(@RequestBody AlumnoEntities alumno){
 		
 		alumnoRepository.save(alumno);
