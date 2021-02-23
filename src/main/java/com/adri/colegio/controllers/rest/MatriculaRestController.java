@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adri.colegio.dao.MatriculaDAO;
+import com.adri.colegio.dtos.Caja;
 import com.adri.colegio.dtos.Matricula;
 import com.adri.colegio.entities.MatriculaEntities;
+import com.adri.colegio.repositorios.CajaRepository;
 import com.adri.colegio.repositorios.MatriculaRepository;
 
 /**
@@ -36,6 +38,9 @@ public class MatriculaRestController {
 	
 	@Autowired
 	MatriculaRepository matriculaRepository;
+	
+	@Autowired
+	CajaRepository cajaRepository;	
 	
 	@PostMapping(value = "matriculas")
 	public ResponseEntity<String> insertarMatricula(@RequestBody MatriculaEntities matricula){
@@ -70,9 +75,20 @@ public class MatriculaRestController {
 	}
 	
 	@DeleteMapping(value = "matriculas/{id}")
-	public ResponseEntity<String> borrarMatricula(@PathVariable("id") Integer id){
+	public ResponseEntity<String> borrarMatricula(@PathVariable("id") Integer idMatricula){
 		
-		matriculaRepository.deleteById(id);
+		List<Caja> caja = cajaRepository.listaCajas(idMatricula);
+		
+		Caja c = caja.get(0);
+		
+		if(c != null && idMatricula != null) {
+			
+			
+			
+			cajaRepository.deleteById(c.getId());
+			
+			matriculaRepository.deleteById(idMatricula);
+		}
 		
 		return new ResponseEntity<>("Exterminio con éxito!", HttpStatus.OK);
 		
