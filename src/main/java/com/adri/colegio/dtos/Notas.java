@@ -23,6 +23,28 @@ public class Notas {
 		super();
 	}
 
+	
+	
+	/**
+	 * @param id
+	 * @param idAlumno
+	 * @param nombre
+	 * @param asignatura
+	 * @param nota
+	 * @param fecha
+	 */
+	public Notas(int id, int idAlumno, String nombre, String asignatura, int nota, String fecha) {
+		super();
+		this.id = id;
+		this.idAlumno = idAlumno;
+		this.nombre = nombre;
+		this.asignatura = asignatura;
+		this.nota = nota;
+		this.fecha = fecha;
+	}
+
+
+
 	/**
 	 * @param nombre
 	 * @param asignatura
